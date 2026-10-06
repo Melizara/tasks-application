@@ -10,6 +10,7 @@ import { Task } from './task.entity';
 export class TasksService {
   constructor(private tasksRepository: TasksRepository) {}
 
+  //Promise c'est quelque chose qui se fera plus tard.
   getTasks(filterDto: GetTasksFilterDto): Promise<Task[]> {
     return this.tasksRepository.getTasks(filterDto);
   }
