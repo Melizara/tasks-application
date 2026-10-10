@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 //Les DTO définissent les types et formes de données reçue.
@@ -14,9 +15,11 @@ import { CreateTaskDto } from './dto/create-task.dto';
 import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 import { UpdateTaskStatusDto } from './dto/update-task-status.dto';
 import { Task } from './task.entity';
+import { AuthGuard } from '@nestjs/passport';
 
 //Tout les ROUTE commencent par << /tasks >>.
 @Controller('tasks')
+@UseGuards(AuthGuard())
 export class TasksController {
   //Injéction de dépendance, ici on injecte le SERVICE.
   constructor(private tasksService: TasksService) {}
